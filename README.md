@@ -1,4 +1,4 @@
-#Few-Shot Molecular Property Prediction via Fine-Grained and Hierarchical Structure Representation Learning
+# Few-Shot Molecular Property Prediction via Fine-Grained and Hierarchical Structure Representation Learning
 
 This repository is the implementation of FGHS (Few-Shot Molecular Property Prediction via Fine-Grained and Hierarchical Structure Representation Learning).
 
@@ -21,9 +21,6 @@ rdkit            2023.3.2
 
 ## Implementation
 
-### Datasets
-
-For data used in the experiments, please save the contents in the `data` directory.
 
 
 ### Usage
