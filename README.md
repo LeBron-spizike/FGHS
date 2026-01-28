@@ -3,7 +3,7 @@
 This repository is the implementation of FGHS (Few-Shot Molecular Property Prediction via Fine-Grained and Hierarchical Structure Representation Learning).
 
 ## Framework
-<img src="framework.png" alt="framework" style="zoom: 100%;" />
+<img src="FGHS/framework.png" alt="framework" style="zoom: 100%;" />
  
 
 
