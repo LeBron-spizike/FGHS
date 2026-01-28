@@ -19,16 +19,6 @@ num_bond_direction = 3
 
 
 class GINConv(MessagePassing):
-    """
-    Extension of GIN aggregation to incorporate edge information by concatenation.
-
-    Args:
-        emb_dim (int): dimensionality of embeddings for nodes and edges.
-        embed_input (bool): whether to embed input or not.
-
-
-    See https://arxiv.org/abs/1810.00826
-    """
 
     def __init__(self, emb_dim, aggr="add"):
         super(GINConv, self).__init__()
@@ -201,19 +191,6 @@ class GraphSAGEConv(MessagePassing):
 
 
 class GNN(torch.nn.Module):
-    """
-    Args:
-        num_layer (int): the number of GNN layers
-        emb_dim (int): dimensionality of embeddings
-        JK (str): last, concat, max or sum.
-        max_pool_layer (int): the layer from which we use max pool rather than add pool for neighbor aggregation
-        drop_ratio (float): dropout rate
-        gnn_type: gin, gcn, graphsage, gat
-
-    Output:
-        node representations
-
-    """
 
     def __init__(self, num_layer, emb_dim, JK="last", drop_ratio=0, gnn_type="gin", batch_norm=True):
         super(GNN, self).__init__()
@@ -240,12 +217,6 @@ class GNN(torch.nn.Module):
                 self.gnns.append(GATConv(emb_dim))
             elif gnn_type == "graphsage":
                 self.gnns.append(GraphSAGEConv(emb_dim))
-                
-            #modify-attfp
-            elif gnn_type == "attfp":
-                self.gnns.append(AttentiveFPConv(emb_dim))
-            else:
-                raise ValueError(gnn_type)
 
         # List of batchnorms
         self.use_batch_norm = batch_norm
@@ -293,21 +264,6 @@ class GNN(torch.nn.Module):
 
 
 class GNN_Encoder(torch.nn.Module):
-    """
-    Extension of GIN to incorporate edge information by concatenation.
-
-    Args:
-        num_layer (int): the number of GNN layers
-        emb_dim (int): dimensionality of embeddings
-        num_tasks (int): number of tasks in multi-task learning scenario
-        drop_ratio (float): dropout rate
-        JK (str): last, concat, max or sum.
-        graph_pooling (str): sum, mean, max, attention, set2set
-        gnn_type: gin, gcn, graphsage, gat
-
-    See https://arxiv.org/abs/1810.00826
-    JK-net: https://arxiv.org/abs/1806.03536
-    """
 
     def __init__(self, num_layer, emb_dim, JK="last", drop_ratio=0,
                  graph_pooling="mean", gnn_type="gin", batch_norm=True, load_path=None):
