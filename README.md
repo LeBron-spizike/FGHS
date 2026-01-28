@@ -12,10 +12,16 @@ This repository is the implementation of FGHS (Few-Shot Molecular Property Predi
 To run the code successfully, the following dependencies need to be installed:
 
 ```
-python           3.7
-torch            1.13.1
-torch_geometric  2.3.1
-torch_scatter    2.1.1
+python           3.9
+numpy            1.26.4  
+pandas           2.3.3 
+torch            2.3.1
+torch_geometric  2.6.1
+torch_scatter    2.1.2
+torch-sparse     0.6.18
+torch-cluster    1.6.3
+torchvision      0.18.1
+tqdm             4.67.1 
 rdkit            2023.3.2
 ```
 
