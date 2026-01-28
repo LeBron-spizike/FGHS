@@ -27,6 +27,17 @@ rdkit            2023.3.2
 
 ## Implementation
 
+## Datasets
+
+FGHS is evaluated on three widely used public molecular property prediction benchmarks:
+
+- **Tox21**: a toxicity prediction benchmark containing 12 classification tasks.
+- **SIDER**: a side-effect prediction benchmark with 27 tasks.
+- **MUV**: a challenging benchmark with 17 highly imbalanced tasks.
+
+All datasets are publicly available and can be obtained from MoleculeNet or other public chemical ML repositories.
+Due to licensing and storage considerations, we do not redistribute the datasets in this repository.
+Users are expected to download and preprocess the datasets by themselves.
 
 
 ### Usage
