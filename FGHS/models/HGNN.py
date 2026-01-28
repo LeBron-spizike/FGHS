@@ -13,12 +13,6 @@ from torch_geometric.nn import MessagePassing
 from torch_geometric.data import Batch, Data
 
 class SelfAttention(nn.Module):
-    """
-    The class is an implementation of the multi-head self attention
-    "A Structured Self-Attentive Sentence Embedding including regularization"
-    https://arxiv.org/abs/1703.03130 in ICLR 2017
-    We made light modifications for speedup
-    """
 
     def __init__(self, hidden):
         super().__init__()
@@ -42,9 +36,6 @@ class SelfAttention(nn.Module):
 
 
 class BondFloatRBF(nn.Module):
-    """
-    Bond Float Encoder using Radial Basis Functions
-    """
 
     def __init__(self, embed_dim, rbf_params=None, device=None):
         super(BondFloatRBF, self).__init__()
@@ -59,10 +50,6 @@ class BondFloatRBF(nn.Module):
         self.linear = nn.Linear(len(centers), embed_dim).to(device)
 
     def forward(self, x):
-        """
-        Args:
-            edge_float_features(dict of tensor): edge float features.
-        """
         out_embed = 0
         rbf_x = self.rbf(x)
         out_embed += self.linear(rbf_x)
@@ -86,13 +73,6 @@ class HMRGNNConv(MessagePassing):
         self.act = nn.LeakyReLU()
 
     def forward(self, x, edge_index, edge_embeddings):
-        """
-        :param x: [num_node, d]
-        :param edge_index: [2, num_edge]
-        :param edge_attr: [num_edge, num_attr]
-        :param edge_weight: [num_edge, 1]
-        :return:
-        """
 
         msg = self.propagate(edge_index, x=x, edge_attr=edge_embeddings)
         if self.update_mode:
@@ -138,13 +118,6 @@ class HMRGNN(nn.Module):
 
 
     def forward(self, x, edge_index, edge_type, edge_type_list, edge_weight):
-        """
-        :param x: [num_node, d]
-        :param edge_index: [2, num_edge]
-        :param edge_type: [num_edge, num_attr]
-        :param edge_weight: [num_edge, 1]
-        :return:
-        """
 
         prop_edge_select = ~(edge_type_list-edge_type[0]).bool()
         sca_edge_select = ~(edge_type_list - edge_type[1]).bool()
