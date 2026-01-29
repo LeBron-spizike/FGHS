@@ -20,9 +20,9 @@ class GCN(nn.Module):
         return F.leaky_relu(A_norm.mm(self.fc(X)))
 
 
-class KRGTS(nn.Module):
+class FGHS(nn.Module):
     def __init__(self, args, task_num, train_task_num, device):
-        super(KRGTS, self).__init__()
+        super(FGHS, self).__init__()
         self.args = args
         self.device = device
         self.mol_encoder = GNN_Encoder(num_layer=args.mol_num_layer,
