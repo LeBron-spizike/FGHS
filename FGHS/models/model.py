@@ -66,7 +66,6 @@ class FGHS(nn.Module):
                 raise ValueError(f"[{dname}] edge_index and edge_attr shape mismatch: "
                                  f"{d.edge_index.shape} vs {d.edge_attr.shape}")
             if d.edge_index.numel() == 0:
-                print(f"[Warning] {dname} edge_index is empty, skipping this graph.")
                 continue
                 
             if d.edge_index.max().item() >= d.x.size(0):
